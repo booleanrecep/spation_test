@@ -1,10 +1,11 @@
 import React from "react";
 import "./App.css";
+
 let MOBILE_BP = 360;
 let BREAKPOINT = window.innerWidth;
 
 function App() {
-  const fadeRef = React.useRef()
+  const fadeRef = React.useRef();
   const [style, setStyle] = React.useState({
     bg: "",
     height: "",
@@ -12,11 +13,10 @@ function App() {
     fadeIn: "",
     leftDotIsactive: "active",
     rightDotIsactive: "",
-
   });
-  const [count,setCount]=React.useState({count:0})
+  const [count, setCount] = React.useState({ count: 0 });
+
   const handleNavUp = () => {
-    // console.log(fadeRef.current.getBoundingClientRect())
     setStyle((prevState) => ({
       ...prevState,
       height: "60vh",
@@ -49,7 +49,6 @@ function App() {
         leftDotIsactive: "",
         rightDotIsactive: "active",
       }));
-      
     }
 
     if (touchStart - touchEnd < -150) {
@@ -60,7 +59,6 @@ function App() {
         filterBg: "brightness(1.05)",
         leftDotIsactive: "active",
         rightDotIsactive: "",
-        
       }));
       setTimeout(() => {
         setStyle((prevState) => ({
@@ -70,24 +68,27 @@ function App() {
         }));
       }, 200);
     }
-    setCount(prevCount=>({
+    setCount((prevCount) => ({
       ...prevCount,
-       [e.target.getAttribute("name")]:!prevCount[e.target.getAttribute("name")]? prevCount.count+1:prevCount[e.target.getAttribute("name")]++
-     }))
+      [e.target.getAttribute("name")]: !prevCount[e.target.getAttribute("name")]
+        ? prevCount.count + 1
+        : prevCount[e.target.getAttribute("name")]++,
+    }));
   };
   const handleChangeColor = (e) => {
-    // console.log(e.target.getAttribute("name"));
     setStyle((prevState) => ({
       ...prevState,
       toggle: !prevState.toggle,
       bg: prevState.toggle ? "#0E1A2C" : "#47787F",
-      leftDotIsactive:prevState.toggle? "active":"",
-    rightDotIsactive:!prevState.toggle? "active":""
-   }));
-   setCount(prevCount=>({
-    ...prevCount,
-     [e.target.getAttribute("name")]:!prevCount[e.target.getAttribute("name")]? prevCount.count+1:prevCount[e.target.getAttribute("name")]++
-   }))
+      leftDotIsactive: prevState.toggle ? "active" : "",
+      rightDotIsactive: !prevState.toggle ? "active" : "",
+    }));
+    setCount((prevCount) => ({
+      ...prevCount,
+      [e.target.getAttribute("name")]: !prevCount[e.target.getAttribute("name")]
+        ? prevCount.count + 1
+        : prevCount[e.target.getAttribute("name")]++,
+    }));
   };
   const handlers =
     BREAKPOINT <= MOBILE_BP
@@ -97,37 +98,43 @@ function App() {
           onTouchEnd: handleTouchEnd,
         }
       : { onClick: handleChangeColor };
-  console.log(count);
   return (
     <div className="App">
       <div onClick={handleNavDown} style={{ filter: style.filterBg }}></div>
       <nav
         onClick={handleNavUp}
-        style={{ height: style.height,transition: "height 0.5s"}}
+        style={{ height: style.height, transition: "height 0.5s" }}
       >
         <div className="dots">
           <button className={style.leftDotIsactive}></button>
           <button className={style.rightDotIsactive}></button>
         </div>
-        <div className="faded" ></div>
+        <div className="faded"></div>
         <div className="scrolling-divs">
-       {
-       Array.from("spation").map(el=>{
-           return(
-            <div
-            key={el}
-             ref={fadeRef}
-             name={el}
-            {...handlers}
-            style={{
-              backgroundColor: style.bg,
-              transition: "background-color 0.7s",
-            }}
-          ><b style={{color:"red",fontSize:"25px",marginRight:"-75%"}}>{count[el]}</b></div>
-           )
-         })
-       }
-         
+          {Array.from("spation").map((el) => {
+            return (
+              <div
+                key={el}
+                ref={fadeRef}
+                name={el}
+                {...handlers}
+                style={{
+                  backgroundColor: style.bg,
+                  transition: "background-color 0.7s",
+                }}
+              >
+                <b
+                  style={{
+                    color: "red",
+                    fontSize: "25px",
+                    marginRight: "-75%",
+                  }}
+                >
+                  {count[el]}
+                </b>
+              </div>
+            );
+          })}
         </div>
       </nav>
     </div>

@@ -6,63 +6,56 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  cursor: url('./ellipse.png'), auto;	
+  cursor: url("./ellipse.png"), auto;
 }
 
-.App > div:first-of-type{
+.App > div:first-of-type {
   position: relative;
-  top:0;
-  /* border:2px solid black; */
+  top: 0;
   width: 100vw;
   height: 100vh;
-  background: #BCBCBC;
+  background: #bcbcbc;
 }
 
-nav{
-  margin:0;
- padding-top: 20px;
-  height:10vh;
+nav {
+  margin: 0;
+  padding-top: 20px;
+  height: 10vh;
   width: 100vw;
-  /* border: 2px solid red; */
   position: fixed;
   bottom: 0;
-  border-radius: 20px 20px 0 0 ;
-  background: #EDECF1;
-  /* z-index: 5; */
+  border-radius: 20px 20px 0 0;
+  background: #edecf1;
   justify-content: center;
   box-shadow: 0 0 5px 10px #888888;
 }
 
-nav .dots{
+nav .dots {
   margin-top: 5px;
   text-align: center;
- 
 }
-.faded{
+.faded {
   margin-top: 5px;
   height: 15px;
   width: 100%;
-  background-color: #EDECF1;
-  /* border: 2px solid red; */
+  background-color: #edecf1;
   filter: blur(1px);
-  box-shadow: 10px 0px  15px 20px #EDECF1;
+  box-shadow: 10px 0px 15px 20px #edecf1;
   z-index: 2;
 }
-nav .scrolling-divs  > div{
+nav .scrolling-divs > div {
   text-align: center;
   border-radius: 15px;
-  background-color: #0E1A2C;
+  background-color: #0e1a2c;
   display: block;
-  margin:15px auto;
-  width:80%;
-  height:75px;
-
+  margin: 15px auto;
+  width: 80%;
+  height: 75px;
 }
-nav .scrolling-divs  > div:first-of-type{
+nav .scrolling-divs > div:first-of-type {
   margin-top: 20px;
-
 }
-nav .scrolling-divs{
+nav .scrolling-divs {
   z-index: -5;
   margin: 0;
   padding: 0;
@@ -70,25 +63,19 @@ nav .scrolling-divs{
   scroll-behavior: smooth;
   width: 100%;
   height: 100%;
-  
-
 }
 
-button{
-  /* color: #98AFB5; */
- outline: none;
-border: none;
-  /* background-color: #98AFB5 ; */
-  background-color: #d4d4c6 ;
-
-  /* background-size: 1px; */
+button {
+  outline: none;
+  border: none;
+  background-color: #d4d4c6;
   width: 15px;
   height: 15px;
-  font-size:15px;
+  font-size: 15px;
   border-radius: 55px;
   position: relative;
   margin: 10px;
 }
-.active{
-  background-color: #98AFB5 ;
+.active {
+  background-color: #98afb5;
 }
